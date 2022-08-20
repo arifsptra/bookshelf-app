@@ -16,7 +16,35 @@
         <div class="search"><input type="text" id="search" /><button id="searchButton">Cari</button></div>
       </div>
     </header>
-    <main></main>
+    <main>
+      <div class="container">
+        <div class="inputForm">
+          <h2>Masukkan Data Buku Baru</h2>
+          <form id="bookData">
+            <div class="formElement">
+              <label for="judul">Judul</label><br />
+              <input type="text" id="judul" name="judul" required />
+            </div>
+            <div class="formElement">
+              <label for="penulis">Penulis</label><br />
+              <input type="text" id="penulis" name="penulis" required />
+            </div>
+            <div class="formElement">
+              <label for="tahun">Tahun</label><br />
+              <input type="number" id="tahun" name="tahun" required />
+            </div>
+            <div class="formElement check"><label for="cheklistBaca">Sudah dibaca</label><input type="checkbox" /></div>
+            <div class="formElement">
+              <button id="submit" type="submit">Masukkan Buku</button>
+            </div>
+          </form>
+        </div>
+        <div class="action">
+          <div class="unRead"></div>
+          <div class="alreadyRead"></div>
+        </div>
+      </div>
+    </main>
     <footer>
       <p>© 2022 by <strong>Arif Saputra</strong></p>
     </footer>
