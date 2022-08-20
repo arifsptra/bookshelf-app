@@ -9,12 +9,14 @@ html {
 body {
   min-height: 100vh;
 }
+.container.header {
+  align-items: center;
+}
 .container {
   max-width: 1000px;
   margin: 0px auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   height: 100%;
 }
 header {
@@ -49,12 +51,18 @@ h1 {
 main {
   min-height: 81.5vh;
 }
-.inputForm {
+.inputForm,
+.unRead,
+.alreadyRead {
   width: 475px;
+  height: max-content;
   border: 1px solid #eee;
   padding: 20px;
   margin-top: 50px;
   border-radius: 10px;
+}
+.alreadyRead {
+  margin-bottom: 50px;
 }
 h2 {
   text-align: center;
@@ -96,12 +104,48 @@ h2 {
   background: #0088b9;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   transition: 0.4s;
 }
 .formElement button:hover {
   box-shadow: 0px 0px 0px 4px rgba(0, 136, 185, 0.5);
+}
+.list {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.list h3 {
+  font-size: 1.5rem;
+}
+.list p {
+  font-size: 1.2rem;
+}
+.list .action button {
+  margin-left: 4px;
+  cursor: pointer;
+  border: none;
+  padding: 4px 6px;
+  border-radius: 2px;
+  transition: 0.4s;
+  color: #fff;
+}
+.list .action #alreadyReadButton, #unReadButton {
+  background: #00b950;
+}
+.list .action #deleteButton {
+  background: #b90000;
+}
+.list .action #alreadyReadButton:hover, #unReadButton:hover {
+  box-shadow: 0px 0px 0px 3px rgba(0, 185, 80, 0.5);
+}
+.list .action #deleteButton:hover {
+  box-shadow: 0px 0px 0px 3px rgba(185, 0, 0, 0.5);
 }
 footer {
   font-size: 1.4rem;
