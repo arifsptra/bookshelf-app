@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", function () {
     books.push(bookObject);
     // render event
     document.dispatchEvent(new Event(RENDER_EVENT));
+    // call the save data function
+    saveData();
   }
   // the generate id function makes use of the built-in function
   function generateId() {
@@ -109,6 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
       books.splice(bookTarget, 1);
       // render event
       document.dispatchEvent(new Event(RENDER_EVENT));
+      saveData();
     }
     // variable to wrap unread/alreadyRead Button and removeButton
     const actionButton = document.createElement("div");
@@ -128,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (bookTarget == null) return;
         bookTarget.check = false;
         document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
       }
       // add event click trashButton for remove unread list
       trashButton.addEventListener("click", function () {
@@ -153,6 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (bookTarget == null) return;
         bookTarget.check = true;
         document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
       }
       // add event click trashButton for remove unread list
       trashButton.addEventListener("click", function () {
@@ -179,4 +184,49 @@ document.addEventListener("DOMContentLoaded", function () {
     // the makeBook function will return the value of the container variable
     return container;
   }
+  // condition if isStorageExist() value is true
+  if (isStorageExist()) {
+    // call function loadDataFromStorage()
+    loadDataFromStorage();
+  }
 });
+// variable declaration
+const SAVED_EVENT = "saved-book";
+const STORAGE_KEY = "BOOKSHELF_APPS";
+// check browser support web storage or not
+function isStorageExist() {
+  if (typeof Storage === undefined) {
+    alert("Browser Not Supported!");
+    return false;
+  }
+  return true;
+}
+// function to save data
+function saveData() {
+  // condition if isStorageExist() value is true
+  if (isStorageExist()) {
+    // variable declaration by convert javascript object to JSON string
+    const parsed = JSON.stringify(books);
+    // save value to local storage
+    localStorage.setItem(STORAGE_KEY, parsed);
+    // saved event
+    document.dispatchEvent(new Event(SAVED_EVENT));
+  }
+}
+// function for load data from storage
+function loadDataFromStorage() {
+  // variable declaration by fetching value from local storage
+  const serializedData = localStorage.getItem(STORAGE_KEY);
+  // variable declaration by converting JSON string to javascript object
+  let data = JSON.parse(serializedData);
+  // condition if value of data not equal to null
+  if (data !== null) {
+    // loops by retrieving data from data
+    for (const book of data) {
+      // add data to books object
+      books.push(book);
+    }
+  }
+  // render event
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
