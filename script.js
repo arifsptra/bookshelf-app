@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.dispatchEvent(new Event(RENDER_EVENT));
     // call the save data function
     saveData();
+    // clear text input after the user presses the add book button
+    submitForm.reset();
   }
   // the generate id function makes use of the built-in function
   function generateId() {
