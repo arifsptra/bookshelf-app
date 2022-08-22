@@ -126,7 +126,7 @@ h2 {
 .list p {
   font-size: 1.2rem;
 }
-.list .action button {
+.list .actionButton button {
   margin-left: 4px;
   cursor: pointer;
   border: none;
@@ -135,16 +135,16 @@ h2 {
   transition: 0.4s;
   color: #fff;
 }
-.list .action #alreadyReadButton, #unReadButton {
+.list .actionButton #alreadyReadButton, #unReadButton {
   background: #00b950;
 }
-.list .action #deleteButton {
+.list .actionButton #deleteButton {
   background: #b90000;
 }
-.list .action #alreadyReadButton:hover, #unReadButton:hover {
+.list .actionButton #alreadyReadButton:hover, #unReadButton:hover {
   box-shadow: 0px 0px 0px 3px rgba(0, 185, 80, 0.5);
 }
-.list .action #deleteButton:hover {
+.list .actionButton #deleteButton:hover {
   box-shadow: 0px 0px 0px 3px rgba(185, 0, 0, 0.5);
 }
 footer {
