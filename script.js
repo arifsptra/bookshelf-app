@@ -128,6 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       // event for no button is clicked
       noButton.addEventListener("click", function () {
+        // reset bookId variable
+        bookId = "";
         // remove pop up display
         confirm.style.display = "none";
       });
