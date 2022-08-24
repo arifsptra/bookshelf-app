@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- popup confirm delete -->
+    <div id="confirmDelete">
+      <p>Apakah anda yakin ingin menghapus?</p>
+      <button id="yesButton" class="yesButton" value="true">Ya</button><button id="noButton" class="noButton" value="false">Tidak</button>
+    </div>
     <header>
       <div class="container header">
         <div class="logo">
           <h1>Bookshelf Apps.</h1>
         </div>
-        <div class="search"><input type="text" id="search" /><button id="searchButton">Cari</button></div>
+        <form id="searchData" class="search"><input type="text" id="search" name="search" /><button id="searchButton" type="submit">Cari</button></form>
       </div>
     </header>
     <main>
