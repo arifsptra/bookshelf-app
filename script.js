@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // to display book title
     const textTitle = document.createElement("h3");
     textTitle.innerText = bookObject.title;
+    textTitle.classList.add("textTitle");
     // to display book writer
     const textWriter = document.createElement("p");
     textWriter.innerText = "Penulis: " + bookObject.writer;
@@ -248,11 +249,28 @@ function loadDataFromStorage() {
   // render event
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
-//
-// const searchDataForm = document.getElementById("searchData");
-// searchDataForm.addEventListener("submit", function (event) {
-//   const searchData = document.getElementById("search").value.toUpperCase();
-//   console.log(searchData);
-
-//   event.preventDefault();
-// });
+// code for search book
+// event when the search form is submitted (cliked 'cari')
+const searchDataForm = document.getElementById("searchData");
+searchDataForm.addEventListener("submit", function (event) {
+  // take a book list view
+  const list = document.getElementsByClassName("list");
+  // fetch value in search form
+  const searchText = document.getElementById("search").value.toUpperCase();
+  // retrieve a list of description data
+  const description = document.getElementsByClassName("description");
+  // looping to find data according to what you are looking for or not
+  for (let i = 0; i < description.length; i++) {
+    // take the title value in the description variable
+    const title = description[i].getElementsByClassName("textTitle");
+    // if appropriate will be displayed
+    if (title[0].innerHTML.toUpperCase().indexOf(searchText) > -1) {
+      list[i].style.display = "";
+    } else {
+      // otherwise it will not be displayed
+      list[i].style.display = "none";
+    }
+  }
+  // so that the event does not become a default event of a DOM
+  event.preventDefault();
+});
