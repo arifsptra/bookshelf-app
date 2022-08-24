@@ -93,27 +93,43 @@ document.addEventListener("DOMContentLoaded", function () {
     const readCheck = document.createElement("button");
     // function to remove book
     function removeBookList(bookId) {
-      // variable declaration
-      const bookTarget = findBookIndex(bookId);
-      // function to find book index
-      function findBookIndex(bookId) {
-        // loops take value from books object
-        for (const index in books) {
-          // condition if books[i].id is equal to bookId then return index value;
-          if (books[index].id === bookId) {
-            return index;
+      // for confirm delete
+      const confirm = document.getElementById("confirmDelete");
+      const yesButton = document.getElementById("yesButton");
+      const noButton = document.getElementById("noButton");
+      // display pop up display
+      confirm.style.display = "block";
+      // event for yes button is clicked
+      yesButton.addEventListener("click", function () {
+        // variable declaration
+        const bookTarget = findBookIndex(bookId);
+        // function to find book index
+        function findBookIndex(bookId) {
+          // loops take value from books object
+          for (const index in books) {
+            // condition if books[i].id is equal to bookId then return index value;
+            if (books[index].id === bookId) {
+              return index;
+            }
           }
+          // if it does not match the conditions it will return -1
+          return -1;
         }
-        // if it does not match the conditions it will return -1
-        return -1;
-      }
-      // consition if bookTarget is equal to -1 then return empty value;
-      if (bookTarget === -1) return;
-      // use the splice method to remove the element
-      books.splice(bookTarget, 1);
-      // render event
-      document.dispatchEvent(new Event(RENDER_EVENT));
-      saveData();
+        // consition if bookTarget is equal to -1 then return empty value;
+        if (bookTarget === -1) return;
+        // use the splice method to remove the element
+        books.splice(bookTarget, 1);
+        // render event
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
+        // remove pop up display
+        confirm.style.display = "none";
+      });
+      // event for no button is clicked
+      noButton.addEventListener("click", function () {
+        // remove pop up display
+        confirm.style.display = "none";
+      });
     }
     // variable to wrap unread/alreadyRead Button and removeButton
     const actionButton = document.createElement("div");
@@ -232,3 +248,11 @@ function loadDataFromStorage() {
   // render event
   document.dispatchEvent(new Event(RENDER_EVENT));
 }
+//
+// const searchDataForm = document.getElementById("searchData");
+// searchDataForm.addEventListener("submit", function (event) {
+//   const searchData = document.getElementById("search").value.toUpperCase();
+//   console.log(searchData);
+
+//   event.preventDefault();
+// });
