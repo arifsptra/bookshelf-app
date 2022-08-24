@@ -126,7 +126,8 @@ h2 {
 .list p {
   font-size: 1.2rem;
 }
-.list .actionButton button, #confirmDelete button {
+.list .actionButton button,
+.textConfirmDelete button {
   margin-left: 4px;
   cursor: pointer;
   border: none;
@@ -135,16 +136,22 @@ h2 {
   transition: 0.4s;
   color: #fff;
 }
-.list .actionButton #alreadyReadButton, #unReadButton, #confirmDelete .yesButton {
+.list .actionButton #alreadyReadButton,
+#unReadButton,
+.textConfirmDelete .yesButton {
   background: #00b950;
 }
-.list .actionButton #deleteButton, #confirmDelete .noButton {
+.list .actionButton #deleteButton,
+.textConfirmDelete .noButton {
   background: #b90000;
 }
-.list .actionButton #alreadyReadButton:hover, #unReadButton:hover, #confirmDelete .yesButton:hover {
+.list .actionButton #alreadyReadButton:hover,
+#unReadButton:hover,
+.textConfirmDelete .yesButton:hover {
   box-shadow: 0px 0px 0px 3px rgba(0, 185, 80, 0.5);
 }
-.list .actionButton #deleteButton:hover, #confirmDelete .noButton:hover {
+.list .actionButton #deleteButton:hover,
+.textConfirmDelete .noButton:hover {
   box-shadow: 0px 0px 0px 3px rgba(185, 0, 0, 0.5);
 }
 footer {
@@ -154,7 +161,15 @@ footer {
   border-top: 1.2px solid #eee;
 }
 #confirmDelete {
+  position: absolute;
+  display: flex;
   display: none;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  width: 100vw;
+  height: 100vh;
+}
+.textConfirmDelete {
   position: absolute;
   top: 37%;
   left: 37%;
@@ -166,9 +181,9 @@ footer {
   text-align: center;
   transition: 0.4s;
 }
-#confirmDelete p {
+.textConfirmDelete p {
   font-size: 1.4rem;
 }
-#confirmDelete button {
+.textConfirmDelete button {
   margin: 1rem 0.3rem 0 0.3rem;
 }
